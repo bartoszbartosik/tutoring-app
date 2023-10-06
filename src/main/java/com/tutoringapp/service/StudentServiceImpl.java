@@ -35,7 +35,7 @@ public class StudentServiceImpl implements StudentService{
 		
 		if (studentDTOs.isEmpty())
 			throw new TutoringAppException("Service.STUDENTS_NOT_FOUND");
-		return null;
+		return studentDTOs;
 	}
 	
 	
