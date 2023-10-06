@@ -9,9 +9,9 @@ create table student(
     constraint ps_studentid_pk primary key (student_id)
 );
 
-insert into student values(100, 'Andrew', 'Bernard')
-insert into student values(101, 'Dwight', 'Schrute')
-insert into student values(102, 'Michael', 'Scott')
+insert into student values(100, 'Andrew', 'Bernard');
+insert into student values(101, 'Dwight', 'Schrute');
+insert into student values(102, 'Michael', 'Scott');
 
 create table lesson(
     student_id int,

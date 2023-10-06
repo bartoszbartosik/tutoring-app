@@ -1,5 +1,4 @@
 package com.tutoringapp.api;
 
-
-public class StudentAPI {
+public class TutoringAPI {
 }
