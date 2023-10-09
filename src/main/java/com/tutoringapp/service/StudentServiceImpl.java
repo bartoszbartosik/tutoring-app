@@ -57,6 +57,20 @@ public class StudentServiceImpl implements StudentService{
 		
 		return studentDTO;
 	}
+
+
+	@Override
+	public Integer addStudent(StudentDTO studentDTO) throws TutoringAppException {
+
+		Student student = new Student();
+		student.setStudentId(studentDTO.getStudentId());
+		student.setName(studentDTO.getName());
+		student.setSurname(studentDTO.getSurname());
+		
+		Integer studentId = studentRepository.save(student).getStudentId();
+		
+		return studentId;
+	}
 	
 	
 	
