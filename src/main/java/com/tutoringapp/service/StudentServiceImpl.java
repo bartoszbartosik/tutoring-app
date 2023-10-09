@@ -2,6 +2,7 @@ package com.tutoringapp.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,26 @@ public class StudentServiceImpl implements StudentService{
 			throw new TutoringAppException("Service.STUDENTS_NOT_FOUND");
 		return studentDTOs;
 	}
+
+	
+	@Override
+	public StudentDTO getStudent(Integer studentId) throws TutoringAppException {
+		
+		Optional<Student> optional = studentRepository.findById(studentId);
+		
+		if (optional.isEmpty())
+			throw new TutoringAppException("Service.STUDENT_ID_NOT_FOUND");
+		
+		StudentDTO studentDTO = new StudentDTO();
+		Student student = optional.get();
+		
+		studentDTO.setStudentId(student.getStudentId());
+		studentDTO.setName(student.getName());
+		studentDTO.setSurname(student.getSurname());
+		
+		return studentDTO;
+	}
+	
 	
 	
 }

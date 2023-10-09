@@ -7,4 +7,5 @@ import com.tutoringapp.exception.TutoringAppException;
 
 public interface StudentService {
 	public List<StudentDTO> findAll() throws TutoringAppException;
+	public StudentDTO getStudent(Integer studentId) throws TutoringAppException;
 }
