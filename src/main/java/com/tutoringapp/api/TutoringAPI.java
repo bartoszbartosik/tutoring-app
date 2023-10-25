@@ -56,10 +56,10 @@ public class TutoringAPI {
 		return new ResponseEntity<>(successMessage, HttpStatus.OK);
 	}
 	
-	@DeleteMapping(value = "/students/studentId")
+	@DeleteMapping(value = "/students/{studentId}")
 	public ResponseEntity<String> deleteStudent(@PathVariable Integer studentId) throws TutoringAppException {
 		studentService.deleteStudent(studentId);
-		String successMessage = environment.getProperty("API.STUDENT_DELETE" + studentId);
+		String successMessage = environment.getProperty("API.STUDENT_DELETE")  + studentId;
 		return new ResponseEntity<>(successMessage, HttpStatus.OK);
 	}
 	
