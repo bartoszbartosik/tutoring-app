@@ -85,6 +85,17 @@ public class StudentServiceImpl implements StudentService{
 		student.setName(studentDTO.getName());
 		student.setSurname(studentDTO.getSurname());
 	}
+
+
+	@Override
+	public void deleteStudent(Integer studentId) throws TutoringAppException {
+		Optional<Student> optional = studentRepository.findById(studentId);
+		
+		if (optional.isEmpty())
+			throw new TutoringAppException("Service.STUDENT_ID_NOT_FOUND" + studentId);
+		
+		studentRepository.delete(optional.get());
+	}
 	
 	
 	
