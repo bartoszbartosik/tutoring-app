@@ -88,7 +88,7 @@ public class StudentServiceImpl implements StudentService{
 
 
 	@Override
-	public Integer deleteStudent(Integer studentId) throws TutoringAppException {
+	public void deleteStudent(Integer studentId) throws TutoringAppException {
 		Optional<Student> optional = studentRepository.findById(studentId);
 		
 		if (optional.isEmpty())

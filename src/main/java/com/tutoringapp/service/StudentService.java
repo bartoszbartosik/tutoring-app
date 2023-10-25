@@ -10,5 +10,5 @@ public interface StudentService {
 	public StudentDTO getStudent(Integer studentId) throws TutoringAppException;
 	public Integer addStudent(StudentDTO studentDTO) throws TutoringAppException;
 	public void updateStudent(Integer studentId, StudentDTO studentDTO) throws TutoringAppException;
-	public Integer deleteStudent(Integer studentId) throws TutoringAppException;
+	public void deleteStudent(Integer studentId) throws TutoringAppException;
 }
