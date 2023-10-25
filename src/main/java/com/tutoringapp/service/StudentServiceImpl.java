@@ -95,8 +95,6 @@ public class StudentServiceImpl implements StudentService{
 			throw new TutoringAppException("Service.STUDENT_ID_NOT_FOUND" + studentId);
 		
 		studentRepository.delete(optional.get());
-		
-		return studentId;
 	}
 	
 	
