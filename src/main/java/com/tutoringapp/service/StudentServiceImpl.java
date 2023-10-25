@@ -47,7 +47,7 @@ public class StudentServiceImpl implements StudentService{
 		
 		
 		if (optional.isEmpty())
-			throw new TutoringAppException("Service.STUDENT_ID_NOT_FOUND");
+			throw new TutoringAppException("Service.STUDENT_ID_NOT_FOUND" + studentId);
 		
 		StudentDTO studentDTO = new StudentDTO();
 		Student student = optional.get();
@@ -76,10 +76,10 @@ public class StudentServiceImpl implements StudentService{
 
 	@Override
 	public void updateStudent(Integer studentId, StudentDTO studentDTO) throws TutoringAppException {
-		Optional<Student> optional =studentRepository.findById(studentId);
+		Optional<Student> optional = studentRepository.findById(studentId);
 		
 		if (optional.isEmpty())
-			throw new TutoringAppException("Service.STUDENT_ID_NOT_FOUND");
+			throw new TutoringAppException("Service.STUDENT_ID_NOT_FOUND" + studentId);
 		
 		Student student = optional.get();
 		student.setName(studentDTO.getName());
