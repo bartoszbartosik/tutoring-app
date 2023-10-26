@@ -5,23 +5,22 @@ import java.time.LocalTime;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 
 @Entity
-@IdClass(LessonId.class)
 public class Lesson {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer lessonId;
 	// Join Student table on student_id
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "student_id", unique = true)
 	private Student student;
-	
-	@Id
 	private LocalDate lessonDate;
-	
-	@Id
 	private LocalTime startTime;
 	private LocalTime finishTime;
 	private LocalTime duration;
