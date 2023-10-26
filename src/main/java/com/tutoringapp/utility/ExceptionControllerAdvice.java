@@ -20,7 +20,12 @@ public class ExceptionControllerAdvice {
 	@ExceptionHandler(TutoringAppException.class)
 	public ResponseEntity<ErrorInfo> tutoringAppExceptionHandler(TutoringAppException exception) {
 		ErrorInfo error = new ErrorInfo();
-		error.setErrorMessage(environment.getProperty(exception.getMessage()));
+		
+		if (exception.getId() == null) {
+			error.setErrorMessage(environment.getProperty(exception.getMessage()));
+		} else {
+			error.setErrorMessage(environment.getProperty(exception.getMessage()) + exception.getId());
+		}
 		error.setErrorCode(HttpStatus.NOT_FOUND.value());
 		error.setTimestamp(LocalDateTime.now());
 		
