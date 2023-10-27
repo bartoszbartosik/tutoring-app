@@ -10,4 +10,5 @@ public interface LessonService {
 	public LessonDTO getLesson(Integer lessonId) throws TutoringAppException;
 	public Integer addLesson(LessonDTO lessonDTO) throws TutoringAppException;
 	public void updateLesson(Integer lessonId, LessonDTO lessonDTO) throws TutoringAppException;
+	public void deleteLesson(Integer lessonId) throws TutoringAppException;
 }

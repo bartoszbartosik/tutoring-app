@@ -98,7 +98,13 @@ public class TutoringAPI {
 		lessonService.updateLesson(lessonId, lessonDTO);
 		String successMessage = environment.getProperty("API.LESSON_UPDATE") + lessonId;
 		return new ResponseEntity<>(successMessage, HttpStatus.OK);
-		
+	}
+	
+	@DeleteMapping(value = "lessons/{lessonId}")
+	public ResponseEntity<String> deleteLesson(@PathVariable Integer lessonId) throws TutoringAppException {
+		lessonService.deleteLesson(lessonId);
+		String successMessage = environment.getProperty("API.LESSON_DELETE") + lessonId;
+		return new ResponseEntity<>(successMessage, HttpStatus.OK);
 	}
 	
 }
