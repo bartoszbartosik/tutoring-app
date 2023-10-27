@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tutoringapp.dto.LessonDTO;
 import com.tutoringapp.dto.StudentDTO;
 import com.tutoringapp.exception.TutoringAppException;
+import com.tutoringapp.service.LessonService;
 import com.tutoringapp.service.StudentService;
 
 @RestController
@@ -25,6 +27,9 @@ public class TutoringAPI {
 	
 	@Autowired
 	private StudentService studentService;
+	
+	@Autowired
+	private LessonService lessonService;
 	
 	@Autowired
 	private Environment environment;
@@ -61,6 +66,12 @@ public class TutoringAPI {
 		studentService.deleteStudent(studentId);
 		String successMessage = environment.getProperty("API.STUDENT_DELETE")  + studentId;
 		return new ResponseEntity<>(successMessage, HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "lessons/{lessonId}")
+	public ResponseEntity<LessonDTO> getLesson(@PathVariable Integer lessonId) throws TutoringAppException {
+		LessonDTO lessonDTO = lessonService.getLesson(lessonId);
+		return new ResponseEntity<>(lessonDTO, HttpStatus.OK);
 	}
 	
 	
