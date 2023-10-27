@@ -79,5 +79,11 @@ public class TutoringAPI {
 		List<LessonDTO> lessonsList = lessonService.findAll();
 		return new ResponseEntity<>(lessonsList, HttpStatus.OK);
 	}
+
+	@GetMapping(value = "lessons/{lessonId}")
+	public ResponseEntity<LessonDTO> getLesson(@PathVariable Integer lessonId) throws TutoringAppException {
+		LessonDTO lessonDTO = lessonService.getLesson(lessonId);
+		return new ResponseEntity<>(lessonDTO, HttpStatus.OK);
+	}
 	
 }
