@@ -86,4 +86,11 @@ public class TutoringAPI {
 		return new ResponseEntity<>(lessonDTO, HttpStatus.OK);
 	}
 	
+	@PostMapping(value = "/lessons")
+	public ResponseEntity<String> addLesson(@RequestBody LessonDTO lessonDTO) throws TutoringAppException {
+		Integer lessonId = lessonService.addLesson(lessonDTO);
+		String successMessage = environment.getProperty("API.LESSON_ADD") + lessonId;
+		return new ResponseEntity<>(successMessage, HttpStatus.CREATED);
+	}
+	
 }
