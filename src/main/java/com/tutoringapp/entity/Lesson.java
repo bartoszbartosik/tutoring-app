@@ -33,11 +33,19 @@ public class Lesson {
 	/////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////   G E T T E R S   &   S E T T E R S   /////////////////////////
 	
+	public Integer getLessonId() {
+		return lessonId;
+	}
+
+	public void setLessonId(Integer lessonId) {
+		this.lessonId = lessonId;
+	}
+	
 	// Student
 	public Student getStudent() {
 		return student;
 	}
-	
+
 	public void setStudent(Student student) {
 		this.student = student;
 	}
