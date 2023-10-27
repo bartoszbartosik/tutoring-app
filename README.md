@@ -1,6 +1,6 @@
 # Tutoring Application
 
-Java Spring Boot application for managing students and conducted lessons. The database consists of `Student` and `Lesson` tables. Former stores data structured in three columns:
+Java Spring Boot application for managing students and conducted lessons. The database consists of `Student` and `Lesson` tables. Former stores data structured in 3 columns:
 
 | student_id | name    | surname |
 | ---------- | ------- | ------- |
@@ -23,3 +23,16 @@ The database initialization code in SQL can be found here: `src/main/resources/T
 
 - [JDK Development Kit](https://www.oracle.com/pl/java/technologies/downloads/)
 - [Apache Maven](https://maven.apache.org/index.html)
+
+## Quickstart
+
+1. Clone the repository: `git clone https://github.com/bartoszbartosik/tutoring-app.git`.
+2. Set up your database connection in `application.properties` (path: `src/main/resources/application.properties`).
+3. Run the `main` method of `TutoringApplication` class.
+
+## Endpoints
+
+- http://localhost:8765/tutoringapp/students/
+- http://localhost:8765/tutoringapp/students/{student_id}
+- http://localhost:8765/tutoringapp/lessons/
+- http://localhost:8765/tutoringapp/lessons/{lesson_id}
