@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class LessonDTO {
+	private Integer lessonId;
 	private StudentDTO studentDTO;
 	private LocalDate lessonDate;
 	private LocalTime startTime;
@@ -17,11 +18,20 @@ public class LessonDTO {
 	/////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////   G E T T E R S   &   S E T T E R S   /////////////////////////
 	
+	public Integer getLessonId() {
+		return lessonId;
+	}
+
+	public void setLessonId(Integer lessonId) {
+		this.lessonId = lessonId;
+	}
+	
+	
 	// Student
 	public StudentDTO getStudent() {
 		return this.studentDTO;
 	}
-	
+
 	public void setStudent(StudentDTO studentDTO) {
 		this.studentDTO = studentDTO;
 	}

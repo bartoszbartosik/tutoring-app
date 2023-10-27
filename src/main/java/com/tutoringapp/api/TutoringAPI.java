@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tutoringapp.dto.LessonDTO;
 import com.tutoringapp.dto.StudentDTO;
 import com.tutoringapp.exception.TutoringAppException;
+import com.tutoringapp.service.LessonService;
 import com.tutoringapp.service.StudentService;
 
 @RestController
@@ -27,9 +29,14 @@ public class TutoringAPI {
 	private StudentService studentService;
 	
 	@Autowired
+	private LessonService lessonService;
+	
+	@Autowired
 	private Environment environment;
 	
-	
+	///////////////////////////
+	////   S T U D E N T   ////
+	///////////////////////////
 	@GetMapping(value = "/students")
 	public ResponseEntity<List<StudentDTO>> getAllStudents() throws TutoringAppException {
 		List<StudentDTO> studentsList = studentService.findAll();
@@ -63,5 +70,41 @@ public class TutoringAPI {
 		return new ResponseEntity<>(successMessage, HttpStatus.OK);
 	}
 	
+
+	///////////////////////////
+	/////   L E S S O N   /////
+	///////////////////////////
+	@GetMapping(value = "/lessons")
+	public ResponseEntity<List<LessonDTO>> getAllLessons() throws TutoringAppException {
+		List<LessonDTO> lessonsList = lessonService.findAll();
+		return new ResponseEntity<>(lessonsList, HttpStatus.OK);
+	}
+
+	@GetMapping(value = "lessons/{lessonId}")
+	public ResponseEntity<LessonDTO> getLesson(@PathVariable Integer lessonId) throws TutoringAppException {
+		LessonDTO lessonDTO = lessonService.getLesson(lessonId);
+		return new ResponseEntity<>(lessonDTO, HttpStatus.OK);
+	}
+	
+	@PostMapping(value = "/lessons")
+	public ResponseEntity<String> addLesson(@RequestBody LessonDTO lessonDTO) throws TutoringAppException {
+		Integer lessonId = lessonService.addLesson(lessonDTO);
+		String successMessage = environment.getProperty("API.LESSON_ADD") + lessonId;
+		return new ResponseEntity<>(successMessage, HttpStatus.CREATED);
+	}
+
+	@PutMapping(value = "lessons/{lessonId}")
+	public ResponseEntity<String> updateLesson(@PathVariable Integer lessonId, @RequestBody LessonDTO lessonDTO) throws TutoringAppException {
+		lessonService.updateLesson(lessonId, lessonDTO);
+		String successMessage = environment.getProperty("API.LESSON_UPDATE") + lessonId;
+		return new ResponseEntity<>(successMessage, HttpStatus.OK);
+	}
+	
+	@DeleteMapping(value = "lessons/{lessonId}")
+	public ResponseEntity<String> deleteLesson(@PathVariable Integer lessonId) throws TutoringAppException {
+		lessonService.deleteLesson(lessonId);
+		String successMessage = environment.getProperty("API.LESSON_DELETE") + lessonId;
+		return new ResponseEntity<>(successMessage, HttpStatus.OK);
+	}
 	
 }
