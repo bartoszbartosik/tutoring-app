@@ -19,4 +19,7 @@ and the latter uses 10 of them to describe each lesson:
 
 The database initialization code in SQL can be found here: `src/main/resources/TutoringDatabase.sql`.
 
-## Description
+## Requirements
+
+- [JDK Development Kit](https://www.oracle.com/pl/java/technologies/downloads/)
+- [Apache Maven](https://maven.apache.org/index.html)
