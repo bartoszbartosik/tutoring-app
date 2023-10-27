@@ -8,4 +8,5 @@ import com.tutoringapp.exception.TutoringAppException;
 public interface LessonService {
 	public List<LessonDTO> findAll() throws TutoringAppException;
 	public LessonDTO getLesson(Integer lessonId) throws TutoringAppException;
+	public void updateLesson(Integer lessonId, LessonDTO lessonDTO) throws TutoringAppException;
 }
