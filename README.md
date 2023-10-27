@@ -1,2 +1,22 @@
-# tutoring-app
-Java Spring Boot application for managing students and conducted lessons.
+# Tutoring Application
+
+Java Spring Boot application for managing students and conducted lessons. The database consists of `Student` and `Lesson` tables. Former stores data structured in three columns:
+
+| student_id | name    | surname |
+| ---------- | ------- | ------- |
+| 100        | Andrew  | Bernard |
+| 101        | Dwight  | Schrute |
+| 102        | Michael | Scott   |
+
+and the latter uses 10 of them to describe each lesson:
+
+| lesson_id | student_id | lesson_date | start_time | finish_time | duration | description        | wage | to_pay | payment |
+| --------- | ---------- | ----------- | ---------- | ----------- | -------- | ------------------ | ---- | ------ | ------- |
+| 10        | 100        | 2022-11-16  | 18:00:00   | 19:30:00    | 01:30:00 | Trigonometry       | 60   | 90     | 100     |
+| 11        | 102        | 2022-11-16  | 19:45:00   | 21:15:00    | 01:30:00 | Quadratic function | 60   | 90     | 90      |
+| 12        | 100        | 2022-11-18  | 18:00:00   | 19:30:00    | 01:30:00 | Matrices           | 60   | 90     | 100     |
+| 13        | 101        | 2022-11-18  | 20:00:00   | 21:30:00    | 01:30:00 | Polynomials        | 60   | 90     | 0       |
+
+The database initialization code in SQL can be found here: `src/main/resources/TutoringDatabase.sql`.
+
+## Description
