@@ -86,5 +86,16 @@ public class LessonServiceImpl implements LessonService {
 		
 		return lessonDTO;
 	}
+
+	@Override
+	public void deleteLesson(Integer lessonId) throws TutoringAppException {
+		Optional<Lesson> optional = lessonRepository.findById(lessonId);
+		
+		if (optional.isEmpty())
+			throw new TutoringAppException("Service.LESSON_ID_NOT_FOUND", lessonId);
+		
+		lessonRepository.delete(optional.get());
+		
+	}
 	
 }
