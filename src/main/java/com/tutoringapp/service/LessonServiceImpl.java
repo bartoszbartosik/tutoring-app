@@ -111,5 +111,29 @@ public class LessonServiceImpl implements LessonService {
 		
 		return lessonId;
 	}
+		
+	public void updateLesson(Integer lessonId, LessonDTO lessonDTO) throws TutoringAppException {
+		Optional<Lesson> optional = lessonRepository.findById(lessonId);
+		
+		if (optional.isEmpty())
+			throw new TutoringAppException("Service.LESSON_ID_NOT_FOUND", lessonId);
+		
+		Lesson lesson = optional.get();
+		
+		Student student = new Student();
+		student.setStudentId(lessonDTO.getStudent().getStudentId());
+		student.setName(lessonDTO.getStudent().getName());
+		student.setSurname(lessonDTO.getStudent().getSurname());
+		
+		lesson.setStudent(student);
+		lesson.setLessonDate(lessonDTO.getLessonDate());
+		lesson.setStartTime(lessonDTO.getStartTime());
+		lesson.setFinishTime(lessonDTO.getFinishTime());
+		lesson.setDuration(lessonDTO.getDuration());
+		lesson.setDescription(lessonDTO.getDescription());
+		lesson.setWage(lessonDTO.getWage());
+		lesson.setToPay(lessonDTO.getToPay());
+		lesson.setPayment(lessonDTO.getPayment());
+	}
 	
 }

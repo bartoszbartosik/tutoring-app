@@ -92,5 +92,13 @@ public class TutoringAPI {
 		String successMessage = environment.getProperty("API.LESSON_ADD") + lessonId;
 		return new ResponseEntity<>(successMessage, HttpStatus.CREATED);
 	}
+
+	@PutMapping(value = "lessons/{lessonId}")
+	public ResponseEntity<String> updateLesson(@PathVariable Integer lessonId, @RequestBody LessonDTO lessonDTO) throws TutoringAppException {
+		lessonService.updateLesson(lessonId, lessonDTO);
+		String successMessage = environment.getProperty("API.LESSON_UPDATE") + lessonId;
+		return new ResponseEntity<>(successMessage, HttpStatus.OK);
+		
+	}
 	
 }
